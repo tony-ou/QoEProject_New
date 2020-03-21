@@ -19,15 +19,6 @@ var prompt = require('prompt-sync')();
 var dummy = true;
 
 //Initialize results
-if (fs.existsSync('./results')) {
-    var answer = prompt(`results folder already exists. Do you want to overwrite it? (Y/N) `);
-    if (answer !== 'Y')
-    {
-        process.exit();
-    }
-    rimraf.sync("./results");
-}
-fs.mkdirSync('./results');
 
 
 
