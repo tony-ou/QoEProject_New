@@ -2,9 +2,9 @@
 var getOder = require('../models/random');
 var fs = require('fs');
 
-const vid_folder = "original_videos_Sports_720P_Sports_720P-07d0_1_150k_180";
+const vid_folder = "original_videos_Sports_360P_Sports_360P-32d3_0_200k_176";
 var vid_path = "./videos/" + vid_folder;
-var video_url = "https://github.com/tony-ou/QoEProject/raw/master/1video/videos/" + vid_folder + "/";
+var video_url = "https://github.com/tony-ou/QoEProject_New/raw/master/1video/videos/" + vid_folder + "/";
 
 var num_vids;
 
@@ -18,8 +18,7 @@ var post_start = async (ctx, next) => {
     var device = ctx.request.body.device;
     var age = ctx.request.body.age;
     var network = ctx.request.body.network;
-    var video_order = [1, ...getOder(2,num_vids)];
-   
+    var video_order = [1,2, ...getOder(3,num_vids)];
     console.log(mturkID, device, age);
     var start = new Date().getTime();
 
@@ -50,7 +49,7 @@ var post_start = async (ctx, next) => {
     // very interesting url!
 
     var title = "1/" + num_vids;
-
+console.log(video_src)
     ctx.render('video.html', {
         title: title, video_src : video_src
     });
@@ -67,7 +66,8 @@ var post_grade= async (ctx, next) => {
     ctx.cookies.set('name', value);
 
     var title = user.count + "/" + num_vids;
-    ctx.render('grade.html', {
+    
+   ctx.render('grade.html', {
         title: title, count: user.count, num_vids: num_vids
     });
 }
