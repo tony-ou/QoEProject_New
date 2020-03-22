@@ -20,7 +20,7 @@ def getLength(filename):
     return tot
 
 #input from the cmd line script
-vid_path = './videos/original_videos_Sports_720P_Sports_720P-07d0'
+vid_path = './videos/original_videos_Sports_720P_Sports_720P-07d0_0_400k_360'
 list_dir = os.listdir(vid_path)
 lengths = [] #actual video lengths
 for vid in list_dir:
@@ -31,7 +31,7 @@ for vid in list_dir:
 
 files = ['./results/' + f for f in listdir('./results') if f.split('.')[-1]=='txt']
 data = []
-data.append(['5,5,-1,0,0,5','n',','.join(lengths)])
+data.append(['5,-1,-2,5,0,0,0','n',','.join(lengths)])
 fields = ['score', 'video order', 'view time', 'grade time', 'ID', 'device',
         'age', 'env', 'reason']
 for file in files: 

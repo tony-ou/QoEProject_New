@@ -1,0 +1,9 @@
+5,4,3,3,3,3,4
+1,2,7,5,6,3,4
+10736,24315,24748,24304,26884,36487,24109
+22252,18019,6388,3458,4589,8213,2983
+A82Q1HS5CPZ5I
+Desktop
+25 - 31
+Cable network
+During some part of the video, the whole video quality would drop for a few seconds before returning to normal
