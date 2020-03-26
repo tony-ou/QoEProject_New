@@ -5,7 +5,7 @@ var fs = require('fs');
 const vid_folder = "original_videos_Sports_360P_Sports_360P-32d3_0_200k_176";
 var vid_path = "./videos/" + vid_folder;
 var video_url = "https://github.com/tony-ou/QoEProject_New/raw/master/1video/videos/" + vid_folder + "/";
-
+var reference_src = video_url + "1.mp4";
 var num_vids;
 
 fs.readdir(vid_path, function(err, files) {
@@ -49,7 +49,7 @@ var post_start = async (ctx, next) => {
     // very interesting url!
 
     var title = "1/" + num_vids;
-console.log(video_src)
+console.log(reference_src)
     ctx.render('video.html', {
         title: title, video_src : video_src
     });
@@ -83,9 +83,16 @@ var post_back2video = async (ctx, next) => {
     let value =  Buffer.from(JSON.stringify(user)).toString('base64');
     ctx.cookies.set('name', value);
     var title = user.count + "/" + num_vids;
-    ctx.render('video.html', {
-        title: title, video_src: video_src
-    });
+    if (user.video_order[user.count - 1] == 1){
+        ctx.render('video.html', {
+            title: title, video_src : video_src
+        });
+    }
+    else { 
+        ctx.render('2video.html', {
+        title: title, reference: reference_src,  video_src: video_src
+        });
+    }
 }
 
 var post_next = async (ctx, next) => {
@@ -105,8 +112,8 @@ var post_next = async (ctx, next) => {
         // set new cookie
         let value =  Buffer.from(JSON.stringify(user)).toString('base64');
         ctx.cookies.set('name', value);
-        ctx.render('video.html', {
-            title: title, video_src: video_src
+        ctx.render('2video.html', {
+            title: title, reference: reference_src,  video_src: video_src
         });
     }
     else {

@@ -4,27 +4,32 @@
         <div class="col-md-6 col-md-offset-3", style="text-align: justify;">
             <h2>Instructions for the test</h2>
                 <p>
-                    In this test, you will watch a series of short videos (~20 seconds each) with same content but different levels of impairment.
+                    In this test, you will watch a series of short videos (~20 seconds each) and rate their quality. Please pay close attention to the following guidelines:
                 </p>
-                <p> 
-                    The first video is the reference video without any impairment, and the other videos have impairments such as video stalls, resolution change, etc. (These are just examples and may or may not be present in the videos).                     
-                </p>
-                <p>
-                    After watching each video, your job is to answer the following question about video quality. Follow your immediate impression and don't spend too long thinking.
-                </p>
-                <p>
-                    <b>Please watch each video in its ENTIRETY and answer each question completely and honestly. Please don't REFRESH the video page. If you have to refresh due to network problem, please report in the last page. You may not be paid if these conditions are not met.</b>
-                </p>
+                <ul>
+                      <li>All the videos are created from a <b>reference video</b> with manually added impairments (e.g. stalls, resolution change, etc. However, you shouldn't consider stalls caused by your network conditions.). So you should rate each video based on how it compares with the <b>reference video</b>. </li>
+                      
+                      <li>Please be sure to watch each video in its <b> full length</b>. We can tell if you skip a video. And please don't refresh the video page when watching. If you have to refresh because network fails, be sure to report this on the last page.</li>
+
+                      <li>You will watch the <b>reference video</b> first and you need to rate it as <b>Excellent</b> quality. </li>
+                      
+                      <li>The survey will end with a question like "what is the quality difference between the test videos". You need to give a reasonable answer such as by mentioning what impairments you saw and describing why you rated some test videos higher than others in general language. (meaning you don't have to recollect details of the videos) </li>
+
+                </ul> 
         </div>
-        <div class="col-md-6 col-md-offset-3", style="text-align: justify;">
+
+
+
+    <div class="col-md-6 col-md-offset-3", style="text-align: justify;">
         <form action="start", method="POST">
             <h2>Please take the simple survey before the test.</h2>
-            <p>We use the results to look for trends in responses.</p>
+
             <div class="form group">
                 <label>Your MTurk Worker ID:(you can find this on your Dashboard or in the upper left corner of the
                     <a href="https://worker.mturk.com" target="_blank">new Worker website</a>)</label>
                 <input name="MTurkID" type="text" class="form-control" id="MTurkID" placeholder="Enter MTurkID">
             </div>
+
             <div class="form-group">
                 <label for="device">Device you use most for video streaming:</label>
                 <select name="device" class="form-control" id="device">
@@ -36,6 +41,7 @@
                     <option>Other device</option>
                 </select>
             </div>
+
             <div class="form-group">
                 <label for="age">Your age group:</label>
                 <select name="age" class="form-control" id="age">
@@ -49,6 +55,7 @@
                     <option>60 and above</option>
                 </select>
             </div>
+
             <div class="form-group">
                 <label for="network">Network you use most for video streaming:</label>
                 <select name="network" class="form-control" id="network">
@@ -57,6 +64,14 @@
                     <option>Cable network</option>
                     <option>Cellular network</option>
                     <option>Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="instruction">Have you read the instructions? You might not be paid if the conditions are not met.</label>
+                <select name="instruction" class="form-control" id="network">
+                    <option value="_null" disabled selected></option> 
+                    <option >Yes, I confirm. </option>
                 </select>
             </div>
             <button type="submit" class="btn btn-primary" onclick="return checkform()">Start test</button>
@@ -76,7 +91,8 @@
         }
         else if($('[name=device]').val() == null ||
                 $('[name=age]').val() == null ||
-                $('[name=network]').val() == null) {
+                $('[name=network]').val() == null || 
+                $('[name=instruction]').val() == null ) {
             flag = false;
             alert("Please complete the form.")
         }
@@ -86,5 +102,4 @@
 
 
 {% endblock %}
-
 
